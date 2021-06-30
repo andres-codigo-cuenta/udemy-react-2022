@@ -1,42 +1,65 @@
 // Import the React and ReactDOM libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "semantic-ui-css/semantic.min.css";
+
+import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 if (module.hot) {
 	module.hot.accept();
 }
 
 class App extends React.Component {
-    // eslint-disable-next-line no-useless-constructor
-    constructor(props) {
-        super(props);
+    state = { lat: null, errorMessage: '' }
 
-        // THIS IS THE ONLY TIME we do direct assignment
-        // to this.state
-        this.state = { lat: null, errorMessage: '' };
+    componentDidMount() {
+        //// NOTE
+        // Good place to do data-loading!
+        ////
 
         window.navigator.geolocation.getCurrentPosition(
-            position => {
-                // we called setState
-                this.setState({ lat: position.coords.latitude });
-            },
-            err => {
-                this.setState({ errorMessage: err.message });
-            }
+            position => this.setState({ lat: position.coords.latitude }),
+            err => this.setState({ errorMessage: err.message })
         );
     }
 
-    // React says we have to define render!!
-    render() {
+    componentDidUpdate() {
+        //// NOTE
+        // Good place to do more data-loading when state/props change
+        ////
+        console.log('My component was just updated - it rendered!')
+    }
+
+    componentWillUnmount() {
+        //// NOTE
+        // Good place to do clean-up (especially for non-React stuff)
+        ////
+    }
+
+    renderContent() {
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: { this.state.errorMessage }</div>;
         }
 
         if (!this.state.errorMessage && this.state.lat) {
-            return <div>Latitude: { this.state.lat }</div>;
+            return <SeasonDisplay lat={this.state.lat} />
         }
         
-        return <div>Loading!</div>;
+        return <Spinner message="Please accept location request" />;
+    }
+
+    // Must be defined
+    render() {
+        //// NOTE
+        // Avoid doing anything besides returning JSX
+        ////
+        
+        return (
+            <div className="ui fluid container">
+                { this.renderContent() }
+            </div>
+        )
     }
 }
 
