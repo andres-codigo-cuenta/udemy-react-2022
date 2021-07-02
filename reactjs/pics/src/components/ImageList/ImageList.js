@@ -1,5 +1,6 @@
-import './ImageList.css'
 import React from 'react';
+
+import '../../css/App.css'
 
 import "semantic-ui-css/semantic.min.css";
 import Spinner from '../Spinner/Spinner';

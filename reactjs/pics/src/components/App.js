@@ -1,6 +1,8 @@
 import React from 'react';
 import unsplash from '../api/unsplash';
 
+import '../sass/App.scss';
+
 import SearchBar from './SearchBar/SearchBar';
 import ImageList from './ImageList/ImageList';
 
