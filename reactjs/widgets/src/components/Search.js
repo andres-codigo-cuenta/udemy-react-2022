@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; 
+import axios from 'axios';
 
 const Search = () => {
 	const [term, setTerm] = useState('programming');
@@ -37,7 +37,7 @@ const Search = () => {
 		return (
 			<div key={result.pageid} className="item">
 				<div className="right floated content">
-					<a 
+					<a
 						className="ui button"
 						href={`https://en.wikipedia.org?curid=${result.pageid}`}
 					>
@@ -59,7 +59,7 @@ const Search = () => {
 			<div className="ui form">
 				<div className="field">
 					<label>Enter Search Term</label>
-					<input 
+					<input
 						value={term}
 						onChange={(e) => setTerm(e.target.value)}
 						className="input"
