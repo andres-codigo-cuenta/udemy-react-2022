@@ -12,9 +12,11 @@ export default function(state = {}, action) {
 			// newState[post.id] = post;
 			// return newState;
 
-			return { ...state, [action.payload.data.id]: action.payload.data };
+			// return { ...state, [action.payload.id]: action.payload };
+			return { ...state, [action.payload.id]: action.payload };
 		case FETCH_POSTS:
-			return _.mapKeys(action.payload.data, 'id');
+			// return _.mapKeys(action.payload, 'id');
+			return _.mapKeys(action.payload, 'id');
 		default:
 			return state;
 	}
