@@ -10,10 +10,6 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/reactjs/10-blog/package-lock.json" # Location of package manifests
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/reactjs/09-songs/package-lock.json" # Location of package manifests
+    directory: "/reactjs/11-streams/api/package-lock.json" # Location of package manifests
     schedule:
       interval: "daily"
